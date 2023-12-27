@@ -1,0 +1,22 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to check if an element is in the viewport
+  function isInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    var screenHeight = window.innerHeight || document.documentElement.clientHeight;
+    return rect.top <= screenHeight * 0.75;
+  }
+
+  // Function to handle the scroll event
+  function handleScroll() {
+    var parallaxContainers = document.querySelectorAll(".parallax-container");
+    
+    parallaxContainers.forEach(function (container) {
+      if (isInViewport(container)) {
+        container.classList.add("parallax-show");
+      }
+    });
+  }
+
+  // Attach the handleScroll function to the window's scroll event
+  window.addEventListener('scroll', handleScroll);
+});
